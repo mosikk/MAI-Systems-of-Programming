@@ -36,7 +36,7 @@ double fun(double x) {
 double golden__section__search(double a, double b) {
     {
         double
-            xmin = (a < b ? golden__start(a, b) : golden__start(b, a));
+            xmin((a < b ? golden__start(a, b) : golden__start(b, a)));
         newline();
         return xmin;
     }
@@ -56,8 +56,8 @@ double golden__start(double a, double b) {
     total__iterations = 0.;
     {
         double
-            xa = a + (mphi * (b - a)),
-            xb = b + (-(mphi * (b - a)));
+            xa(a + (mphi * (b - a))),
+            xb(b + (-(mphi * (b - a))));
         return __mip__try(a, b, xa, fun(xa), xb, fun(xb));
     }
 }
@@ -90,22 +90,21 @@ double mphi = (3. - sqrt(5.)) * (1. / 2.0);
 double __mip__try(double a, double b, double xa, double ya, double xb, double yb) {
     return (close__enough_Q(a, b) ?
         ((a + b) * 0.5) :
-        ({
-            display("+");
-            total__iterations = total__iterations + 1;
+        (   display("+"),
+            total__iterations = total__iterations + 1,
             (ya < yb ? (b = xb,
                     xb = xa,
                     yb = ya,
-                    xa = a + (mphi * (b - a)),
+                    xa = a + mphi * (b - a),
                     __mip__try(a, b, xa, fun(xa), xb, yb)
-                ): (a = xa,
+                ) : (a = xa,
                     xa = xb,
                     ya = yb,
-                    xb = b - (mphi * (b - a)),
+                    xb = b - mphi * (b - a),
                     __mip__try(a, b, xa, ya, xb, fun(xb))
                 )
-            );
-        })
+            )
+        )
     );
 }
 
