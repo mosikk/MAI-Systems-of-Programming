@@ -49,7 +49,8 @@ public:
         addrange(Aid, 4, 'a', 'z', 1);
         addrange(Aid, 4, 'A', 'Z', 1);
         addrange(Aid, 4, '0', '9', 1);
-        addstr(Aid, 4, "!?", 1);
+        addstr(Aid, 4, "!", 1);
+        addstr(Aid, 4, "?", 2);
         Aid.final(1);
 
         // идентификатор предиката
