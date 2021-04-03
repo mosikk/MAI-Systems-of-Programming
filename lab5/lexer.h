@@ -39,8 +39,9 @@ public:
         addrange(Aid, 2, 'a', 'z', 1);
         addrange(Aid, 2, 'A', 'Z', 1);
         addrange(Aid, 2, '0', '9', 1);
-        addstr(Aid, 2, "!-", 1);
+        addstr(Aid, 2, "!", 1);
         addstr(Aid, 2, "?", 2);
+        addstr(Aid, 2, "-", 3);
         addrange(Aid, 3, 'a', 'z', 1);
         addrange(Aid, 3, 'A', 'Z', 1);
         addrange(Aid, 3, '0', '9', 1);
