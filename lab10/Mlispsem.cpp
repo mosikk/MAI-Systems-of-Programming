@@ -64,7 +64,7 @@ int main() {
             string source_name = string(name) + ".ss";
             ifstream tmp(source_name.c_str());
             if (!tmp) break;
-            // строка ввода похожа на имя файла
+            // СЃС‚СЂРѕРєР° РІРІРѕРґР° РїРѕС…РѕР¶Р° РЅР° РёРјСЏ С„Р°Р№Р»Р°
             file = true;
             bc.PARSER_DEBUG = false;
         } while (false);
@@ -80,7 +80,7 @@ int main() {
 
         cout << "Source:" <<
              source_name << endl;
-        { // начало блока распечатки файла
+        { // РЅР°С‡Р°Р»Рѕ Р±Р»РѕРєР° СЂР°СЃРїРµС‡Р°С‚РєРё С„Р°Р№Р»Р°
             ifstream fsource(source_name.c_str());
             int linecount = 0;
             while (fsource) {
@@ -90,7 +90,7 @@ int main() {
                      buf << endl;
             } // while(fsource)...
             cout << "_________________\n";
-        } // конец блока
+        } // РєРѕРЅРµС† Р±Р»РѕРєР°
 
         int res = bc.rewrite(source_name.c_str());
         cout << bc.getMessage();

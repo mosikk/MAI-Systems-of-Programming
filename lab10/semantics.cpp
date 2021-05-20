@@ -7,12 +7,12 @@ void tSM::init() {
     globals.clear();
     locals.clear();
     params.clear();
-    scope = 0; // âíå ïðîöåäóðû
+    scope = 0; // Ð²Ð½Ðµ Ð¿Ñ€Ð¾Ñ†ÐµÐ´ÑƒÑ€Ñ‹
 
-    // êîíñòàíòû:
+    // ÐºÐ¾Ð½ÑÑ‚Ð°Ð½Ñ‚Ñ‹:
     globals["e"] = tgName(VAR | DEFINED | BUILT);
     // ...
-    // ýëåìåíòàðíûå ïðîöåäóðû:
+    // ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°Ñ€Ð½Ñ‹Ðµ Ð¿Ñ€Ð¾Ñ†ÐµÐ´ÑƒÑ€Ñ‹:
     globals["abs"] = tgName(PROC | DEFINED | BUILT, "", 1);
     // ...
     globals["remainder"] = tgName(PROC | DEFINED | BUILT, "", 2);
@@ -25,13 +25,13 @@ int tSM::p01() { // S -> PROG
     for (tGlobal::iterator it = globals.begin();
          it != globals.end();
          ++it) {
-            // Ïðîñìîòðåòü òàáëèöó ãëîáàëüíûõ èìåí
-            // è â ñîîáùåíèè îá îøèáêàõ óêàçàòü èìåíà
-            // ÂÑÅÕ âûçâàííûõ, íî íå îïðåäåëåííûõ ïðîöåäóð,
-            // à òàêæå èñïîëüçîâàííûõ, íî íå îïðåäåëåííûõ
-            // ãëîáàëüíûõ ïåðåìåííûõ.
-            //   it->first   èìÿ
-            //   it->second  ó÷åòíàÿ çàïèñü
+            // ÐŸÑ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñƒ Ð³Ð»Ð¾Ð±Ð°Ð»ÑŒÐ½Ñ‹Ñ… Ð¸Ð¼ÐµÐ½
+            // Ð¸ Ð² ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¸ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐ°Ñ… ÑƒÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð¸Ð¼ÐµÐ½Ð°
+            // Ð’Ð¡Ð•Ð¥ Ð²Ñ‹Ð·Ð²Ð°Ð½Ð½Ñ‹Ñ…, Ð½Ð¾ Ð½Ðµ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð½Ñ‹Ñ… Ð¿Ñ€Ð¾Ñ†ÐµÐ´ÑƒÑ€,
+            // Ð° Ñ‚Ð°ÐºÐ¶Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð½Ñ‹Ñ…, Ð½Ð¾ Ð½Ðµ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð½Ñ‹Ñ…
+            // Ð³Ð»Ð¾Ð±Ð°Ð»ÑŒÐ½Ñ‹Ñ… Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ñ….
+            //   it->first   Ð¸Ð¼Ñ
+            //   it->second  ÑƒÑ‡ÐµÑ‚Ð½Ð°Ñ Ð·Ð°Ð¿Ð¸ÑÑŒ
             // ...
     } // for...
     if (error) return 1;
@@ -88,7 +88,7 @@ int tSM::p09() { // E -> $id
                         "Error[09-1] in line " + S1->line + ": the built-in '"
                         + name +
                         "' procedure \n\t\t\t cannot be used as a variable!\n";
-                        // âñòðîåííóþ ïðîöåäóðó 'abs' íåëüçÿ èñïîëüçîâàòü â êà÷åñòâå ïåðåìåííîé
+                        // Ð²ÑÑ‚Ñ€Ð¾ÐµÐ½Ð½ÑƒÑŽ Ð¿Ñ€Ð¾Ñ†ÐµÐ´ÑƒÑ€Ñƒ 'abs' Ð½ÐµÐ»ÑŒÐ·Ñ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð² ÐºÐ°Ñ‡ÐµÑÑ‚Ð²Ðµ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ð¾Ð¹
                         // the built-in 'abs' procedure cannot be used as a variable
                 return 1;
             }
@@ -98,7 +98,7 @@ int tSM::p09() { // E -> $id
                     + name +
                     "' cannot be used to refer to a variable;\n" +
                     "\t\t\tit was previously declared as a procedure in line " + ref.line + " !\n";
-                    // èìÿ 'f' íåëüçÿ èñïîëüçîâàòü äëÿ ññûëêè íà ïåðåìåííóþ, â ñòðîêå 1 îíî ðàíåå îáúÿâëåíî êàê ïðîöåäóðà
+                    // Ð¸Ð¼Ñ 'f' Ð½ÐµÐ»ÑŒÐ·Ñ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð´Ð»Ñ ÑÑÑ‹Ð»ÐºÐ¸ Ð½Ð° Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ, Ð² ÑÑ‚Ñ€Ð¾ÐºÐµ 1 Ð¾Ð½Ð¾ Ñ€Ð°Ð½ÐµÐµ Ð¾Ð±ÑŠÑÐ²Ð»ÐµÐ½Ð¾ ÐºÐ°Ðº Ð¿Ñ€Ð¾Ñ†ÐµÐ´ÑƒÑ€Ð°
                     // the name 'f' cannot be used to refer to a variable; it was previously declared as a procedure in line 1
             return 1;
 
@@ -120,7 +120,7 @@ int tSM::p12() { // DEFS -> DEFS DEF
 }
 
 int tSM::p13() { // PROC -> HPROC E )
-    // òî÷êà àíàëèçà âûõîäèò èç òåëà ïðîöåäóðû
+    // Ñ‚Ð¾Ñ‡ÐºÐ° Ð°Ð½Ð°Ð»Ð¸Ð·Ð° Ð²Ñ‹Ñ…Ð¾Ð´Ð¸Ñ‚ Ð¸Ð· Ñ‚ÐµÐ»Ð° Ð¿Ñ€Ð¾Ñ†ÐµÐ´ÑƒÑ€Ñ‹
     params.clear();
     scope = 0;
     return 0;
@@ -128,7 +128,7 @@ int tSM::p13() { // PROC -> HPROC E )
 
 int tSM::p14() { // HPROC -> PCPAR )
     // ???
-    // òî÷êà àíàëèçà âõîäèò â òåëî ïðîöåäóðû
+    // Ñ‚Ð¾Ñ‡ÐºÐ° Ð°Ð½Ð°Ð»Ð¸Ð·Ð° Ð²Ñ…Ð¾Ð´Ð¸Ñ‚ Ð² Ñ‚ÐµÐ»Ð¾ Ð¿Ñ€Ð¾Ñ†ÐµÐ´ÑƒÑ€Ñ‹
     scope = 1;
     return 0;
 }
@@ -146,7 +146,7 @@ int tSM::p16() { // PCPAR -> PCPAR $id
                 + S1->name +
                 "' duplicates \n\t\t\tthe '"
                 + S2->name + "' parameter!\n";
-                // â ïðîöåäóðå 'f' äóáëèðóåòñÿ ïàðàìåòð 'x'
+                // Ð² Ð¿Ñ€Ð¾Ñ†ÐµÐ´ÑƒÑ€Ðµ 'f' Ð´ÑƒÐ±Ð»Ð¸Ñ€ÑƒÐµÑ‚ÑÑ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€ 'x'
                 // the 'f' procedure duplicates the 'x' parameter
         return 1;
     }
@@ -157,7 +157,7 @@ int tSM::p16() { // PCPAR -> PCPAR $id
                 + S1->name +
                 "'has the same name \n"
                 "\t\t\tas its parameter!\n";
-                // ó ïðîöåäóðû 'f' òàêîå æå èìÿ, êàê ó åå ïàðàìåòðà
+                // Ñƒ Ð¿Ñ€Ð¾Ñ†ÐµÐ´ÑƒÑ€Ñ‹ 'f' Ñ‚Ð°ÐºÐ¾Ðµ Ð¶Ðµ Ð¸Ð¼Ñ, ÐºÐ°Ðº Ñƒ ÐµÐµ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð°
                 // procedure 'f' has the same name as its parameter
     }
     params.insert(S2->name);
