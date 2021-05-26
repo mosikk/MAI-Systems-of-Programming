@@ -1,0 +1,1 @@
+(define (f cos) (cos 1))

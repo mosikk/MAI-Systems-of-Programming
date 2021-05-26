@@ -1,0 +1,2 @@
+(define (f? a? b?) (and a? b?))
+(f? 1 0 1)
